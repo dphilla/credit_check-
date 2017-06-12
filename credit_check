@@ -1,0 +1,53 @@
+card_number = "4929735477250543"  #invalid
+
+#card_number = "6011823618355969" #valid
+
+valid = false
+
+card_array = card_number.split(//)
+
+card_array.map! do |x|
+  x.to_i
+end
+
+card_array = card_array.reverse
+
+card_array.map!.with_index do |x, i|
+  if i.odd? == true
+    x * 2
+  elsif i.even? == true
+    x
+  else
+  end
+end
+
+#option 1
+
+card_array.map!.with_index do |x, i|
+  if x > 9
+    digit_sum = []
+    digit_sum << card_array.slice(i).to_s.split(//)      #How do I get this to integers in the new array
+  else
+    x
+  end
+end
+
+#option 2?
+
+# card_array.map!.with_index do |x, i|
+#   if x > 9
+#     digit_sum = []
+#     digit_sum << (i[0] + i[1])       #How do I get this to integers in the new array
+#   else
+#     x
+#   end
+# end
+
+
+#after you figure out the above,  everything into a single array (or, once-nested array) to perform the following
+
+if card_array.join.sum % 10 == 0
+  puts "The card is valid!"
+else
+  puts "The card is not valid!"
+end
