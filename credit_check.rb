@@ -1,13 +1,18 @@
-card_number = "5541801923795240"  #invalid
-# card_number = "6011823618355969" #valid       #to check a valid card
-# card_number = gets.chomp                      #to check inputed card numbers for validity
-
 class CreditCheck
   attr_reader :digits
 
   def initialize(digits)
     @digits = digits
   end
+
+  def run_credit_check
+    convert_to_integer
+    multiply_ev_other_by_2
+    checks_for_double_digits
+    checks_sum_of_digits
+  end
+
+private
 
   def convert_to_integer
     card_array = @digits.split(//)
@@ -54,3 +59,6 @@ end
 
 
 instance = CreditCheck.new("5541801923795240")
+# card_number = "5541801923795240"  #invalid
+# card_number = "6011823618355969" #valid       #to check a valid card
+# card_number = gets.chomp                      #to check inputed card numbers for validity
